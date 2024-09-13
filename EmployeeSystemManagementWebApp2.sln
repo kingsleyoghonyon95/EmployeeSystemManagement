@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeSystemManagementWebApp2", "EmployeeSystemManagementWebApp2\EmployeeSystemManagementWebApp2.csproj", "{7C2CD2E6-1F7D-4B18-9E01-EB07AECD20A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeSystemManagement2.Data", "EmployeeSystemManagement2.Data\EmployeeSystemManagement2.Data.csproj", "{8465AFD7-3614-4921-9486-FA5D7F8B1F7F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C2CD2E6-1F7D-4B18-9E01-EB07AECD20A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2CD2E6-1F7D-4B18-9E01-EB07AECD20A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2CD2E6-1F7D-4B18-9E01-EB07AECD20A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2CD2E6-1F7D-4B18-9E01-EB07AECD20A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8465AFD7-3614-4921-9486-FA5D7F8B1F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8465AFD7-3614-4921-9486-FA5D7F8B1F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8465AFD7-3614-4921-9486-FA5D7F8B1F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8465AFD7-3614-4921-9486-FA5D7F8B1F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFAE7A56-DEEA-49E2-80A8-E3A584E4B581}
+	EndGlobalSection
+EndGlobal

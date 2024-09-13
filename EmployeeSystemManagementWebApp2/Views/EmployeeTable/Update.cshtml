@@ -1,0 +1,67 @@
+﻿@model EmployeeViewModel
+@using EmployeeSystemManagement2.Data.Models
+
+@{
+    string pageType = Model?.CurrentEmployeeTable?.EmployeeId > 0 ? "Update Employee" : "Create Employee";
+    ViewData["Title"] = $"Employee Application | {pageType}";
+}
+
+<form action="~/EmployeeTable/Index" method="post">
+    <div>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>First Name:</label>
+                <input type="text" class="form-control" name="firstName" value="@Model?.CurrentEmployeeTable?.FirstName" />
+            </div>
+         </div>
+        <div class="form-row mt-3">
+            
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Last Name:</label>
+                <input type="text" class="form-control" name="lastName" value="@Model?.CurrentEmployeeTable?.LastName" />
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Hire Date:</label>
+                <input type="text" class="form-control" name="hireDate" value="@Model?.CurrentEmployeeTable?.HireDate" />
+            </div>
+        </div>
+        <div class="form-row mt-3">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Salary:</label>
+                <input type="text" class="form-control" name="salary" value="@Model?.CurrentEmployeeTable?.Salary" />
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Bonus:</label>
+                <input type="text" class="form-control" name="bonus" value="@Model?.CurrentEmployeeTable?.Bonus" />
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="col-md-3 offset-md-3 form-group">
+                <label>Position:</label>
+                <input type="text" class="form-control" name="position" value="@Model?.CurrentEmployeeTable?.Position" />
+            </div>
+        </div>
+
+        <div class="form-row mt-3">
+            <div class="col-md-6 offset-md-3">
+                <button type="button" class="btn btn-secondary" onclick="location.href = '/EmployeeTable/Index'">CANCEL</button>
+                <button type="submit" class="btn btn-primary">SAVE Employee</button>
+            </div>
+        </div>
+
+        <input type="hidden" name="employeeID" value="@Model?.CurrentEmployeeTable?.EmployeeId" />
+    </div>
+</form>
