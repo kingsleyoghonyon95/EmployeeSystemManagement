@@ -9,7 +9,7 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 0 4px rgba(37, 140, 251, 0.8);
 }
 
 html {
@@ -18,5 +18,36 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  background-color: antiquewhite;
+  margin-bottom: 0px;
+}
+
+.title {
+    margin-bottom: 80px;
+}
+
+.welcome-page-btn {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+    .welcome-page-btn:hover .tooltip-welcome-page {
+        opacity: 1;
+    }
+
+.tooltip-welcome-page {
+    position: absolute;
+    color: white;
+    background-color: gray;
+    padding: 1px;
+    border-radius: 2px;
+    font-size: 12px;
+    bottom: -33px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+    margin-top: 0;
+    left: 8px;
+    width: 75px;
 }

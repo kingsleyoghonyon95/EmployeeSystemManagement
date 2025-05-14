@@ -16,8 +16,11 @@ namespace EmployeeSystemManagement2.Data.Models
         public string Salary { get; set; }
         public string Bonus { get; set; }
         public string? Position { get; set; }
+        public DateTime CheckInTime { get; set; }
+        public DateTime CheckOutTime { get; set; }  
+        public string? Status { get; set; }
 
-        public EmployeeTableModel(int employeeId, string firstName, string lastName, DateTime hireDate, string salary, string bonus, string position)
+        public EmployeeTableModel(int employeeId, string firstName, string lastName, DateTime hireDate, string salary, string bonus, string position , DateTime checkInTime, DateTime checkOutTime, string status)
         {
             EmployeeId = employeeId;
             FirstName = firstName;
@@ -26,6 +29,9 @@ namespace EmployeeSystemManagement2.Data.Models
             Salary = salary;
             Bonus = bonus;
             Position = position;
+            CheckInTime = checkInTime;
+            CheckOutTime = checkOutTime;
+            Status = status;
         }
 
         public EmployeeTableModel()

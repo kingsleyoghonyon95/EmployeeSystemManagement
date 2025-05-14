@@ -1,9 +1,39 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a href="~/EmployeeTable/Index">EmployeeTable</a>
-</div>
+
+<h1 class="title">Welcome to Employee System Web App2</h1>
+
+<section>
+    <h2>
+        About EmployeeSystemWebApp2
+    </h2>
+
+    <p>
+        The Employee System Management project is a CRUD-based ASP.NET Core MVC application designed to manage employee records using a layered architecture.
+    </p>
+
+    <p>
+        It utilizes Entity Framework Core (EF Core) as the ORM to enable seamless communication between the application and the underlying database. The EmployeeDBContext class inherits from DbContext and serves as the primary bridge to the database. 
+        Fluent API configurations inside OnModelCreating are used to map the EmployeeTableModel to the database schema. 
+        Properties such as FirstName, LastName, and Status are explicitly mapped to column names (e.g., .HasColumnName("EmployeeFirstName")), and constraints like .HasMaxLength(50) enforce data integrity and consistency.
+    </p>
+
+    <p>
+        A Repository Layer (EmployeeTableRepository) abstracts data access logic from the rest of the application. It handles all CRUD operations — Create, Read (all or by ID), Update, and Delete — promoting clean separation of concerns and supporting testability through dependency injection.
+    </p>
+
+    <p>
+        This project demonstrates my practical experience with EF Core, Fluent API configuration, repository pattern, and clean architectural practices in a real-world data-driven application.
+    </p>
+
+    <div class="welcome-page-btn">
+        <a class="btn btn-primary" href="~/EmployeeTable/Index">
+            click here
+            <div class="tooltip-welcome-page">
+                To Home Page
+            </div>
+        </a>
+    </div>
+</section>

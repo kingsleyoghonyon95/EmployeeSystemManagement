@@ -42,10 +42,9 @@ namespace EmployeeSystemManagement2.Data.Context
                 entity.Property(e => e.Salary);
                 entity.Property(e => e.Bonus);
                 entity.Property(e => e.Position);
-                
-               
-                    
-                    
+                entity.Property(e => e.CheckInTime).HasColumnName("CheckInTime");
+                entity.Property(e => e.CheckOutTime).HasColumnName("CheckOutTime"); 
+                entity.Property(e => e.Status).HasColumnName("Status").HasMaxLength(50);
             });
         }
     }

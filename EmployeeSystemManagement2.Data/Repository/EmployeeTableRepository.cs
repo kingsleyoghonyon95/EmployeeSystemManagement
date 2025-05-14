@@ -37,6 +37,9 @@ namespace EmployeeSystemManagement2.Data.Repository
             existingEmployee.Salary = employee.Salary;
             existingEmployee.Bonus = employee.Bonus;
             existingEmployee.Position = employee.Position;
+            existingEmployee.CheckInTime = employee.CheckInTime;
+            existingEmployee.CheckOutTime = employee.CheckOutTime;
+            existingEmployee.Status = employee.Status;
             
 
             _dbContext.SaveChanges();

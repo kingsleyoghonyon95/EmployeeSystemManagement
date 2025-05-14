@@ -1,67 +1,83 @@
 ﻿@model EmployeeViewModel
-@using EmployeeSystemManagement2.Data.Models
 
 @{
-    string pageType = Model?.CurrentEmployeeTable?.EmployeeId > 0 ? "Update Employee" : "Create Employee";
-    ViewData["Title"] = $"Employee Application | {pageType}";
+    ViewData["Title"] = "Employee System Management | Update Employee";
 }
 
-<form action="~/EmployeeTable/Index" method="post">
-    <div>
-        <div class="row">
-            <div class="col-6 offset-3 text-center">
-                <h1 class="display-4" style="margin: 20px 0px;">@pageType</h1>
-            </div>
-        </div>
+<div class="container mt-4">
+    <h1 class="display-4 text-center">Update Employee</h1>
 
-        <div class="form-row mt-3">
-            <div class="col-md-3 offset-md-3 form-group">
-                <label>First Name:</label>
-                <input type="text" class="form-control" name="firstName" value="@Model?.CurrentEmployeeTable?.FirstName" />
+    @if (Model.CurrentEmployeeTable != null)
+    {
+        <div class="card shadow mt-3">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Employee Details</h5>
             </div>
-         </div>
-        <div class="form-row mt-3">
-            
-            <div class="col-md-3 offset-md-3 form-group">
-                <label>Last Name:</label>
-                <input type="text" class="form-control" name="lastName" value="@Model?.CurrentEmployeeTable?.LastName" />
-            </div>
-        </div>
+            <div class="card-body">
+                <form asp-action="save" asp-controller="EmployeeTable" method="post">
+                    <input type="hidden" name="EmployeeId" value="@Model.CurrentEmployeeTable.EmployeeId" />
 
-        <div class="form-row mt-3">
-            <div class="col-md-3 offset-md-3 form-group">
-                <label>Hire Date:</label>
-                <input type="text" class="form-control" name="hireDate" value="@Model?.CurrentEmployeeTable?.HireDate" />
-            </div>
-        </div>
-        <div class="form-row mt-3">
-            <div class="col-md-3 offset-md-3 form-group">
-                <label>Salary:</label>
-                <input type="text" class="form-control" name="salary" value="@Model?.CurrentEmployeeTable?.Salary" />
-            </div>
-        </div>
+                    <div class="form-group mb-3">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" class="form-control" id="FirstName" name="FirstName" value="@Model.CurrentEmployeeTable.FirstName" required />
+                    </div>
 
-        <div class="form-row mt-3">
-            <div class="col-md-3 offset-md-3 form-group">
-                <label>Bonus:</label>
-                <input type="text" class="form-control" name="bonus" value="@Model?.CurrentEmployeeTable?.Bonus" />
+                    <div class="form-group mb-3">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" class="form-control" id="LastName" name="LastName" value="@Model.CurrentEmployeeTable.LastName" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="HireDate">Hire Date</label>
+                        <input type="date" class="form-control" id="HireDate" name="HireDate"
+                               value="@(Model.CurrentEmployeeTable.HireDate > DateTime.MinValue ? Model.CurrentEmployeeTable.HireDate.ToString("yyyy-MM-dd") : "")"
+                               max="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Salary">Salary</label>
+                        <input type="text" class="form-control" id="Salary" name="Salary" value="@Model.CurrentEmployeeTable.Salary" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Bonus">Bonus</label>
+                        <input type="text" class="form-control" id="Bonus" name="Bonus" value="@Model.CurrentEmployeeTable.Bonus" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Position">Position</label>
+                        <input type="text" class="form-control" id="Position" name="Position" value="@Model.CurrentEmployeeTable.Position" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="CheckInTime">Check-In Time</label>
+                        <input type="datetime-local" class="form-control" id="CheckInTime" name="CheckInTime"
+                               value="@(Model.CurrentEmployeeTable.CheckInTime > DateTime.MinValue ? Model.CurrentEmployeeTable.CheckInTime.ToString("yyyy-MM-ddTHH:mm") : "")"
+                               max="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="CheckOutTime">Check-Out Time</label>
+                        <input type="datetime-local" class="form-control" id="CheckOutTime" name="CheckOutTime"
+                               value="@(Model.CurrentEmployeeTable.CheckOutTime > DateTime.MinValue ? Model.CurrentEmployeeTable.CheckOutTime.ToString("yyyy-MM-ddTHH:mm") : "")"
+                               max="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="Status">Status</label>
+                        <input type="text" class="form-control" id="Status" name="Status" value="@Model.CurrentEmployeeTable.Status" />
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-success">Save</button>
+                        <a href="@Url.Action("Index", "Employee")" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="form-row mt-3">
-            <div class="col-md-3 offset-md-3 form-group">
-                <label>Position:</label>
-                <input type="text" class="form-control" name="position" value="@Model?.CurrentEmployeeTable?.Position" />
-            </div>
-        </div>
-
-        <div class="form-row mt-3">
-            <div class="col-md-6 offset-md-3">
-                <button type="button" class="btn btn-secondary" onclick="location.href = '/EmployeeTable/Index'">CANCEL</button>
-                <button type="submit" class="btn btn-primary">SAVE Employee</button>
-            </div>
-        </div>
-
-        <input type="hidden" name="employeeID" value="@Model?.CurrentEmployeeTable?.EmployeeId" />
-    </div>
-</form>
+    }
+    else
+    {
+        <div class="alert alert-danger mt-4">Employee not found.</div>
+    }
+</div>

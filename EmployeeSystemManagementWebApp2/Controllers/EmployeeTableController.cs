@@ -3,59 +3,60 @@ using EmployeeSystemManagement2.Data.Models;
 using EmployeeSystemManagementWebApp2.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmployeeSystemManagementWebApp2.Controllers
+public class EmployeeTableController : Controller
 {
-    public class EmployeeTableController : Controller
+    private readonly EmployeeDBContext _dBContext;
+
+    public EmployeeTableController(EmployeeDBContext dBContext)
     {
-        private readonly EmployeeDBContext _dBContext;
+        _dBContext = dBContext;
+    }
 
-        public EmployeeTableController(EmployeeDBContext dBContext)
+    public IActionResult Index(string? actionMessage = null, bool isSuccess = true)
+    {
+        EmployeeViewModel model = new(_dBContext)
         {
-            _dBContext = dBContext;
+            ActionMessage = actionMessage,
+            IsActionSuccess = isSuccess
+        };
+
+        return View(model);
+    }
+
+    [HttpPost]
+    public IActionResult Save(int employeeId, string firstName, string lastName, DateTime hireDate, string salary, string bonus, string position, DateTime checkInTime, DateTime checkOutTime, string status)
+    {
+        EmployeeViewModel model = new(_dBContext);
+        EmployeeTableModel modelTable = new(employeeId, firstName, lastName, hireDate, salary, bonus, position, checkInTime, checkOutTime, status);
+
+        model.SaveEmployee(modelTable);
+
+        return RedirectToAction("Index", new
+        {
+            actionMessage = "Employee has been saved",
+            isSuccess = true
+        });
+    }
+
+    public IActionResult Update(int id)
+    {
+        EmployeeViewModel model = new(_dBContext, id);
+        return View(model);
+    }
+
+    public IActionResult Delete(int id)
+    {
+        EmployeeViewModel model = new(_dBContext);
+
+        if (id > 0)
+        {
+            model.RemoveEmployee(id);
         }
 
-        public IActionResult Index()
+        return RedirectToAction("Index", new
         {
-            EmployeeViewModel model = new(_dBContext);
-            return View(model);
-        }
-
-        [HttpPost]
-        public IActionResult Index(int employeeId, string firstName, string lastName, DateTime hireDate, string salary, string bonus, string position  )
-        {
-            EmployeeViewModel model = new(_dBContext);
-            
-            EmployeeTableModel modelTable = new EmployeeTableModel(employeeId, firstName, lastName, hireDate, salary, bonus, position );
-
-            model.SaveEmployee(modelTable);
-            model.IsActionSuccess = true;
-            model.ActionMessage = "Employee has been saved";
-
-            return View("Index", model);
-
-        }
-
-        public IActionResult Update(int id)
-        {
-            EmployeeViewModel model = new(_dBContext, id);
-            return View(model);
-
-        }
-
-        public IActionResult Delete(int id)
-        {
-            EmployeeViewModel model = new(_dBContext);
-
-            if (id > 0)
-            {
-                model.RemoveEmployee(id);
-            }
-
-            model.IsActionSuccess = true;
-            model.ActionMessage = "Employee has been deleted sucessfully";
-            return View("Index", model);
-        }
-        
-         
+            actionMessage = "Employee has been deleted successfully",
+            isSuccess = true
+        });
     }
 }
