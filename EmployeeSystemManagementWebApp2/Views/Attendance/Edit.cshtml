@@ -1,0 +1,27 @@
+﻿@model EmployeeSystemManagement2.Data.Models.EmployeeAttendanceModel
+
+@{
+    ViewBag.Title = "Edit Attendance";
+}
+
+<h2>Edit Attendance</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="EmployeeId" />
+
+    <div class="form-group">
+        <label asp-for="ClockIn"></label>
+        <input asp-for="ClockIn" type="datetime-local" class="form-control" />
+        <span asp-validation-for="ClockIn" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ClockOut"></label>
+        <input asp-for="ClockOut" type="datetime-local" class="form-control" />
+        <span asp-validation-for="ClockOut" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

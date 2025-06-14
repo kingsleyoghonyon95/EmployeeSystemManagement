@@ -49,31 +49,16 @@
                         <input type="text" class="form-control" id="Position" name="Position" value="@Model.CurrentEmployeeTable.Position" required />
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="CheckInTime">Check-In Time</label>
-                        <input type="datetime-local" class="form-control" id="CheckInTime" name="CheckInTime"
-                               value="@(Model.CurrentEmployeeTable.CheckInTime > DateTime.MinValue ? Model.CurrentEmployeeTable.CheckInTime.ToString("yyyy-MM-ddTHH:mm") : "")"
-                               max="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label for="CheckOutTime">Check-Out Time</label>
-                        <input type="datetime-local" class="form-control" id="CheckOutTime" name="CheckOutTime"
-                               value="@(Model.CurrentEmployeeTable.CheckOutTime > DateTime.MinValue ? Model.CurrentEmployeeTable.CheckOutTime.ToString("yyyy-MM-ddTHH:mm") : "")"
-                               max="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" required />
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <label for="Status">Status</label>
-                        <input type="text" class="form-control" id="Status" name="Status" value="@Model.CurrentEmployeeTable.Status" />
-                    </div>
-
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-success">Save</button>
-                        <a href="@Url.Action("Index", "Employee")" class="btn btn-secondary">Cancel</a>
+                        <a href="@Url.Action("Index", "EmployeeTable")" class="btn btn-secondary">Cancel</a>
                     </div>
                 </form>
             </div>
+        </div>
+
+        <div class="mt-4">
+            <a class="btn btn-outline-info" href="@Url.Action("Index", "Attendance")">View Attendance</a>
         </div>
     }
     else

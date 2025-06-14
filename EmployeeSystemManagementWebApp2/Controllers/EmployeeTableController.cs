@@ -24,10 +24,20 @@ public class EmployeeTableController : Controller
     }
 
     [HttpPost]
-    public IActionResult Save(int employeeId, string firstName, string lastName, DateTime hireDate, string salary, string bonus, string position, DateTime checkInTime, DateTime checkOutTime, string status)
+    public IActionResult Save(int employeeId, string firstName, string lastName, DateTime hireDate, string salary, string bonus, string position)
     {
         EmployeeViewModel model = new(_dBContext);
-        EmployeeTableModel modelTable = new(employeeId, firstName, lastName, hireDate, salary, bonus, position, checkInTime, checkOutTime, status);
+
+        EmployeeTableModel modelTable = new(
+            employeeId,
+            firstName,
+            lastName,
+            hireDate,
+            salary,
+            bonus,
+            position
+            
+        );
 
         model.SaveEmployee(modelTable);
 

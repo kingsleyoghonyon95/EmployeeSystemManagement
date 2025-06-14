@@ -1,12 +1,12 @@
 ﻿@model EmployeeViewModel
 @{
     ViewData["Title"] = "Employee List";
+    var isOfficer = User.IsInRole("Officer");  // You must enable role management in Startup.cs
 }
 
 <div class="container mt-4">
     <h1 class="display-5 text-center">Employee List</h1>
 
-    @* Action message (Success/Error) *@
     @if (!string.IsNullOrEmpty(Model.ActionMessage))
     {
         var alertClass = Model.IsActionSuccess ? "alert-success" : "alert-danger";
@@ -35,10 +35,7 @@
                     <th>Salary</th>
                     <th>Bonus</th>
                     <th>Position</th>
-                    <th>Check-In Time</th>
-                    <th>Check-Out Time</th>
-                    <th>Status</th>
-                    <th colspan="2">Actions</th>
+                    <th colspan="@(isOfficer ? 3 : 2)">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,15 +48,18 @@
                         <td>@emp.Salary</td>
                         <td>@emp.Bonus</td>
                         <td>@emp.Position</td>
-                        <td>@emp.CheckInTime</td>
-                        <td>@emp.CheckOutTime</td>
-                        <td>@emp.Status</td>
                         <td>
                             <a href="/EmployeeTable/Update/@emp.EmployeeId" class="btn btn-sm btn-primary">Edit</a>
                         </td>
                         <td>
                             <a href="/EmployeeTable/Delete/@emp.EmployeeId" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
                         </td>
+                        @if (isOfficer)
+                        {
+                            <td>
+                                <a href="/Attendance?employeeId=@emp.EmployeeId" class="btn btn-sm btn-info">Attendance</a>
+                            </td>
+                        }
                     </tr>
                 }
             </tbody>

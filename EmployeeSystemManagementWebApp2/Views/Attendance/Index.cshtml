@@ -1,0 +1,37 @@
+﻿@model List<EmployeeSystemManagement2.Data.Models.EmployeeAttendanceModel>
+@{
+    ViewBag.Title = "Attendance Records";
+    bool isOfficer = ViewBag.IsOfficer != null && (bool)ViewBag.IsOfficer;
+}
+
+<h2>Attendance Records</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Clock In</th>
+            <th>Clock Out</th>
+            @if (isOfficer)
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@(record.Employee?.FirstName) @(record.Employee?.LastName)</td>
+                <td>@record.ClockIn.ToString("g")</td>
+                <td>@(record.ClockOut?.ToString("g") ?? "N/A")</td>
+                @if (isOfficer)
+                {
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@record.Id">Edit</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
